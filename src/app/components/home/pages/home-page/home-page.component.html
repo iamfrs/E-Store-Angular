@@ -1,0 +1,828 @@
+<!-- Gradient Background -->
+<div class="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#D6C3B2]/90 to-[#f8f4f1]/0 z-0"></div>
+
+<!-- Header Content -->
+<section class="relative z-10 px-8 py-4 flex flex-col gap-3 bg-transparent">
+
+<!-- Row 1: Logo, Search | Location, Cart, Login -->
+<div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 w-full">
+  <!-- Left: Logo + Search -->
+  <div class="flex flex-col sm:flex-row items-start sm:items-center gap-9 sm:gap-12 w-full lg:w-auto">
+    <!-- Logo -->
+    <span class="text-[18px] font-bold text-[#5C4849]">My App</span>
+
+    <!-- Search Bar -->
+    <div class="flex items-center bg-[#f7f7f7] rounded-lg px-2 py-1 w-full sm:w-[650px] h-[40px]">
+      <input
+        type="text"
+        placeholder="Search..."
+        class="bg-[#f7f7f7] w-full h-full focus:outline-none rounded-full text-sm text-gray-700 placeholder-gray-500 pr-1"
+      />
+      <button
+        type="button"
+        class="ml-1 p-1 bg-[#6f4e37] rounded-full text-white hover:bg-[#5a3e2c] transition"
+        title="Search"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1010.5 18a7.5 7.5 0 006.15-3.35z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Right: Location, Cart, Login -->
+  <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 w-full lg:w-auto">
+    <!-- Location -->
+    <div class="flex items-start gap-3 text-sm text-[#5C4849] w-full sm:w-auto">
+      <div class="pt-1">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 24 24">
+          <path
+            d="M12 2C8.13 2 5 5.13 5 9c0 4.84 6.08 11.54 6.39 11.89a1 1 0 0 0 1.22 0C12.92 20.54 19 13.84 19 9c0-3.87-3.13-7-7-7zm0 16.72C10.03 16.21 7 11.94 7 9a5 5 0 1 1 10 0c0 2.94-3.03 7.21-5 9.72z"
+            fill="#6f4e37" />
+          <circle cx="12" cy="9" r="2.5" fill="#6f4e37" />
+        </svg>
+      </div>
+      <div class="flex flex-col justify-center">
+        <button class="text-xs text-[#6f4e37] hover:underline hover:text-[#5C4849] mt-0.5"
+          (click)="updateLocation()">Update Location</button>
+        <span class="text-[13px]">{{ location }}</span>
+      </div>
+    </div>
+
+    <!-- Cart -->
+    <div class="flex items-center gap-1 text-[#5C4849] text-sm cursor-pointer">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="#686868"
+        stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M3 3h2l.4 2M7 13h10l4-8H5.4
+         M7 13l-1.35 5.35a1 1 0 001.9.6L8 17h8
+         l.45 1.95a1 1 0 001.9-.6L17 13H7z" />
+      </svg>
+      <span>Cart</span>
+    </div>
+
+    <!-- Login -->
+    <div class="flex items-center gap-1 text-[#5C4849] text-sm cursor-pointer">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="#686868" stroke-width="1.5"
+        viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10" />
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M12 12c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18c1.5-2 4.5-2 6-2s4.5 0 6 2" />
+      </svg>
+      <span>Login</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- Navigation Row -->
+<div class="flex items-center gap-4 md:gap-6 mt-2 px-2 flex-wrap">
+  <ng-container *ngFor="let nav of navLinks">
+    <div
+      class="flex items-center gap-2 text-base md:text-lg text-[#5C4849] font-semibold cursor-pointer hover:text-[#6f4e37] transition"
+    >
+      <ng-container [ngSwitch]="nav.icon">
+        <!-- Products -->
+        <svg *ngSwitchCase="'box'" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="#686868" viewBox="0 0 24 24" stroke-width="1.5">
+          <path d="M3 7l9 5 9-5M3 17l9 5 9-5M3 7v10l9 5 9-5V7M3 7l9-5 9 5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+
+        <!-- Coffee -->
+        <svg *ngSwitchCase="'coffee'" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="#686868" viewBox="0 0 24 24" stroke-width="1.5">
+          <path d="M8 21h8a4 4 0 0 0 4-4V5H4v12a4 4 0 0 0 4 4zM20 7h1a3 3 0 1 1-1 6v-6z" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+
+        <!-- Burger -->
+        <svg *ngSwitchCase="'burger'" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="#686868" viewBox="0 0 24 24" stroke-width="1.5">
+          <path d="M4 8h16M4 12h16M4 16h16" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+
+        <!-- Sandwich -->
+        <svg *ngSwitchCase="'sandwich'" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="#686868" viewBox="0 0 24 24" stroke-width="1.5">
+          <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+
+        <!-- Broast -->
+        <svg *ngSwitchCase="'broast'" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="#686868" viewBox="0 0 24 24" stroke-width="1.5">
+          <path d="M5 12h14M5 12c1-6 13-6 14 0M5 12c1 6 13 6 14 0" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+
+        <!-- Offers -->
+        <svg *ngSwitchCase="'tag'" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="#686868" viewBox="0 0 24 24" stroke-width="1.5">
+          <path d="M5 7l7-7 7 7-7 7-7-7z" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+
+        <!-- Blog -->
+        <svg *ngSwitchCase="'blog'" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="#686868" viewBox="0 0 24 24" stroke-width="1.5">
+          <path d="M4 4h16v16H4V4zm4 4h8v8H8V8z" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+
+        <!-- About Us -->
+        <svg *ngSwitchCase="'info'" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="#686868" viewBox="0 0 24 24" stroke-width="1.5">
+          <path d="M12 12v4m0-8h.01M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+
+        <!-- Help -->
+        <svg *ngSwitchCase="'help'" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="#686868" viewBox="0 0 24 24" stroke-width="1.5">
+          <path d="M12 18h.01M12 14a4 4 0 1 0-4-4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </ng-container>
+      <span>{{ nav.label }}</span>
+    </div>
+  </ng-container>
+</div>
+
+
+<!-- Banner Section -->
+<!-- Banner Carousel Section -->
+<div class="relative z-10 mt-4">
+  <div class="relative w-full mx-auto rounded-lg shadow-lg overflow-hidden">
+    <div id="bannerCarousel" class="relative">
+      <!-- Slides -->
+      <div class="carousel-item">
+        <img
+          src="assets/restaurant-web-banner-vector.jpg"
+          alt="Banner 1"
+          class="w-full h-[400px] md:h-[500px] object-cover"
+        />
+      </div>
+      <div class="carousel-item hidden">
+        <img
+          src="assets/Food-banner-1.jpg"
+          alt="Banner 2"
+          class="w-full h-[400px] md:h-[500px] object-cover"
+        />
+      </div>
+      <div class="carousel-item hidden">
+        <img
+          src="assets/711e4471eb4608366c1319b45a0e7616b1880287.jpg"
+          alt="Banner 3"
+          class="w-full h-[400px] md:h-[500px] object-cover"
+        />
+      </div>
+      <div class="carousel-item hidden">
+        <img
+          src="assets/f7df0697376281.5ec3ca8c1e1f5.jpg"
+          alt="Banner 4"
+          class="w-full h-[400px] md:h-[500px] object-cover"
+        />
+      </div>
+
+      <!-- Dots -->
+      <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+        <span class="dot w-3 h-3 bg-white rounded-full opacity-50 cursor-pointer"></span>
+        <span class="dot w-3 h-3 bg-white rounded-full opacity-50 cursor-pointer"></span>
+        <span class="dot w-3 h-3 bg-white rounded-full opacity-50 cursor-pointer"></span>
+        <span class="dot w-3 h-3 bg-white rounded-full opacity-50 cursor-pointer"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .carousel-item {
+    transition: opacity 1s ease-in-out;
+  }
+</style>
+
+</section>
+
+
+
+
+<!-- Recently Viewed Products Section -->
+<div class="mt-10 px-4">
+  <h2 class="text-2xl font-semibold mb-4">Recent Products</h2>
+
+  <!-- Horizontal Scroll Container -->
+  <div
+    #recentScroll
+    class="flex gap-5 overflow-x-auto scroll-smooth pb-4 hide-scrollbar"
+  >
+    <!-- Product Card -->
+    <div
+      *ngFor="let item of recentlyViewed"
+      class="min-w-[220px] bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 relative group"
+    >
+      <!-- Product Image -->
+      <div class="relative overflow-hidden rounded-t-2xl">
+        <img
+          [src]="item.image"
+          [alt]="item.name"
+          class="w-full h-48 object-cover transform group-hover:scale-105 transition-all duration-500"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        ></div>
+        <div
+          class="absolute bottom-2 left-3 text-white text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        >
+          {{ item.category }}
+        </div>
+      </div>
+
+      <!-- Product Details -->
+      <div class="p-3">
+        <h3 class="font-semibold text-gray-800 truncate">{{ item.name }}</h3>
+        <p class="text-sm text-gray-500 mb-2 truncate">
+          {{ item.brand }}
+        </p>
+
+        <div class="flex items-center justify-between text-sm">
+          <span class="font-semibold text-gray-800">₹{{ item.price }}</span>
+          <span
+            class="px-2 py-0.5 bg-green-100 text-green-600 rounded text-xs font-medium"
+            >{{ item.rating }} ★</span
+          >
+        </div>
+
+        <!-- Key Attributes -->
+        <div class="mt-2 text-xs text-gray-600 space-y-1">
+          <div *ngFor="let attr of item.attributes | slice:0:2">
+            <span class="font-medium">{{ attr.key }}:</span>
+            <span>{{ attr.value }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Inline CSS to hide scrollbars -->
+<style>
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
+
+
+
+
+
+
+
+
+<!-- Trending Shops Section -->
+<div class="px-4 mt-10">
+  <h2 class="text-xl font-semibold mb-4 text-gray-800">Trending Shops</h2>
+
+  <!-- Horizontal Scroll Container -->
+  <div class="flex space-x-6 overflow-x-auto pb-4 scrollbar-hide">
+    <div
+      *ngFor="let shop of trendingShops"
+      class="min-w-[240px] sm:min-w-[260px] bg-white rounded-2xl shadow-lg overflow-hidden flex-shrink-0 hover:-translate-y-1 hover:shadow-xl transition-transform duration-300 cursor-pointer"
+    >
+      <!-- Shop Image -->
+      <div class="relative">
+        <img
+          [src]="shop.image"
+          [alt]="shop.name"
+          class="w-full h-44 object-cover"
+        />
+        <!-- Rating Badge -->
+        <span
+          class="absolute top-3 right-3 bg-black/70 text-white text-xs px-2 py-1 rounded-full flex items-center gap-1"
+        >
+          ⭐ {{ shop.rating }}
+        </span>
+      </div>
+
+      <!-- Shop Details -->
+      <div class="p-4">
+        <h3 class="text-lg font-semibold text-gray-800 truncate">{{ shop.name }}</h3>
+        <p class="text-sm text-gray-500 mb-2">{{ shop.category }}</p>
+
+        <!-- Attributes -->
+        <div class="text-xs text-gray-700 space-y-1 mb-3">
+          <div *ngFor="let attr of shop.attributes" class="flex justify-between">
+            <span class="font-medium">{{ attr.key }}:</span>
+            <span>{{ attr.value }}</span>
+          </div>
+        </div>
+
+        <!-- Action Button & Status -->
+        <div class="flex justify-between items-center">
+          <button
+            class="text-xs bg-[#5C4849] text-white px-3 py-1.5 rounded-md hover:bg-[#6f4e37] transition"
+          >
+            Visit
+          </button>
+          <span class="text-[#E67E22] font-semibold text-sm">Open Now</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Inline Tailwind Scrollbar Hide -->
+<style>
+  /* Hide scrollbar - Tailwind-compatible */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+</style>
+
+
+
+
+
+<div class="w-full h-[50vh] overflow-hidden relative">
+  <!-- Slides Wrapper -->
+<div
+  class="flex items-center ease-in-out"
+  [ngClass]="{ 'transition-transform duration-700': isTransitioning }"
+  [style.transform]="'translateX(-' + currentIndex * 100 + '%)'"
+>
+
+    <div
+      *ngFor="let slide of storeSlides; let i = index"
+      class="relative flex-shrink-0 w-full px-3"
+    >
+      <!-- Slide Card -->
+      <div
+        class="rounded-2xl overflow-hidden shadow-2xl relative transition-all duration-700"
+      >
+        <img
+          [src]="slide.image"
+          [alt]="slide.store"
+          class="w-full h-[50vh] object-cover"
+        />
+        <!-- Info Overlay -->
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent text-white flex flex-col justify-end p-6"
+        >
+          <h3 class="text-3xl font-bold drop-shadow-lg">{{ slide.store }}</h3>
+          <p class="text-lg mt-2 font-medium text-blue-200">
+            {{ slide.offer }}
+          </p>
+          <p class="text-sm text-gray-300 mt-2">
+            Combo: {{ slide.comboProducts.join(', ') }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dots -->
+  <div
+    class="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex space-x-2"
+  >
+    <button
+      *ngFor="let slide of storeSlides; let i = index"
+      (click)="goToSlide(i)"
+      class="w-3 h-3 rounded-full transition-all duration-300"
+      [ngClass]="
+        i === currentIndex
+          ? 'bg-white opacity-100 scale-110'
+          : 'bg-white/50 hover:opacity-80'
+      "
+    ></button>
+  </div>
+</div>
+
+
+
+
+
+
+<style>
+ .product-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  background-color: #fdfdfd;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+.product-image img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.product-card:hover .product-image img {
+  transform: scale(1.05);
+}
+
+.product-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.65), transparent);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.product-title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.product-desc {
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.product-shop {
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+
+.product-price {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #ffd700;
+}
+
+.product-btn {
+  align-self: start;
+  background-color: #fff;
+  color: #333;
+  font-size: 0.8rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.product-btn:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.see-more-btn {
+  background-color: #4b2e05;
+  color: white;
+  padding: 0.6rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.see-more-btn:hover {
+  background-color: #2e1b03;
+}
+
+/* Show only 10 initially (2 rows of 5) */
+.product-container.collapsed .product-card:nth-child(n + 11) {
+  display: none;
+}
+
+</style>
+<div class="p-6">
+  <!-- Header -->
+  <div class="flex justify-between items-center mb-6">
+    <h2 class="text-2xl font-semibold text-gray-800">Combo Products</h2>
+  </div>
+
+  <!-- Product Grid -->
+  <div
+    class="product-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
+    [class.collapsed]="collapsed"
+  >
+    <div
+      *ngFor="let product of CMproducts"
+      class="product-card"
+    >
+      <div class="product-image">
+        <img [src]="product.image" [alt]="product.title" />
+      </div>
+      <div class="product-overlay">
+        <div>
+          <h3 class="product-title">{{ product.title }}</h3>
+          <p class="product-desc">{{ product.description }}</p>
+          <p class="product-shop">{{ product.shop }}</p>
+          <p class="product-price">₹{{ product.price }}</p>
+        </div>
+        <a href="#" class="product-btn">Order Now</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- See More Button -->
+  <div class="flex justify-end mt-6">
+    <button (click)="toggleSeeMore()" class="see-more-btn">
+      {{ collapsed ? "See More" : "See Less" }}
+    </button>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+  <div
+    *ngFor="let banner of banners"
+    class="relative h-56 rounded-2xl overflow-hidden shadow-lg group"
+  >
+    <!-- Background Image -->
+    <div
+      class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+      [style.backgroundImage]="'url(' + banner.image + ')'"
+    ></div>
+
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-black/50"></div>
+
+    <!-- Text Content -->
+    <div
+      class="relative z-10 flex flex-col justify-center items-start h-full text-white p-6"
+    >
+      <h2 class="text-2xl font-bold mb-2 drop-shadow-lg">
+        {{ banner.title }}
+      </h2>
+      <p class="text-sm opacity-90 mb-3 max-w-xs">
+        {{ banner.subtitle }}
+      </p>
+      <button
+        class="px-4 py-2 bg-white text-gray-800 text-sm font-medium rounded-lg hover:bg-gray-200 transition"
+      >
+        Explore Now
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<style>
+  .scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+</style>
+
+
+
+
+
+<div class="p-4 bg-[#f8f3ef] ">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <!-- Category Card -->
+    <div
+      *ngFor="let category of SPcategories"
+      class="bg-[#fffaf6] rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-[#e8ded3]"
+    >
+      <!-- ☕ Category Header -->
+      <div
+        class="flex items-center justify-between px-5 py-3 bg-gradient-to-r from-[#c6a482] to-[#b8906b] text-white"
+      >
+        <h2 class="text-lg font-semibold tracking-wide">{{ category.name }}</h2>
+        <button
+          class="text-sm bg-[#fff3e0] text-[#5b3a29] px-3 py-1.5 rounded-lg font-medium shadow-sm hover:bg-[#e7d1b4] transition-all duration-200"
+          (click)="viewMore(category.name)"
+        >
+          View All
+        </button>
+      </div>
+
+      <!-- 🍩 Product Grid -->
+      <div class="grid grid-cols-2 gap-4 p-4">
+        <div
+          *ngFor="let product of category.products"
+          class="relative group rounded-xl overflow-hidden bg-[#f3ebe4] cursor-pointer shadow-sm hover:shadow-md transition-all duration-300"
+        >
+          <!-- Product Image -->
+          <img
+            [src]="product.image"
+            alt="{{ product.name }}"
+            class="w-full h-48 object-cover rounded-xl transition-transform duration-300 group-hover:scale-105"
+          />
+
+          <!-- Description Overlay -->
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-[#3c2a1a]/80 via-[#3c2a1a]/40 to-transparent flex flex-col justify-end p-3 text-[#f7ede1]"
+          >
+            <p class="text-base font-semibold truncate">{{ product.name }}</p>
+            <p class="text-xs opacity-80">{{ product.brand }}</p>
+            <p class="text-lg font-bold text-[#ffd9a0] mt-1">₹{{ product.price }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<style>
+  img {
+    transition: transform 0.4s ease;
+  }
+  .group:hover img {
+    transform: scale(1.07);
+  }
+</style>
+
+
+
+
+
+<div class="combo-products-section mt-4 px-4">
+  <!-- Header -->
+  <div class="flex justify-between items-center mb-4">
+    <h2 class="text-2xl font-semibold">Products</h2>
+  </div>
+
+  <!-- Products Grid -->
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
+  >
+    <div
+      *ngFor="let item of visibleCombos"
+      class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 relative group"
+    >
+      <!-- Product Image -->
+      <div class="relative overflow-hidden rounded-t-2xl">
+        <img
+          [src]="item.image"
+          [alt]="item.name"
+          class="w-full h-48 object-cover transform group-hover:scale-105 transition-all duration-500"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        ></div>
+        <div
+          class="absolute bottom-2 left-3 text-white text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        >
+          {{ item.category }}
+        </div>
+      </div>
+
+      <!-- Product Details -->
+      <div class="p-3">
+        <h3 class="font-semibold text-gray-800 truncate">{{ item.name }}</h3>
+        <p class="text-sm text-gray-500 mb-2 truncate">
+          {{ item.brand }}
+        </p>
+
+        <div class="flex items-center justify-between text-sm">
+          <span class="font-semibold text-gray-800">₹{{ item.price }}</span>
+          <span
+            class="px-2 py-0.5 bg-green-100 text-green-600 rounded text-xs font-medium"
+            >{{ item.rating }} ★</span
+          >
+        </div>
+
+        <div class="mt-2 text-xs text-gray-600 space-y-1">
+          <div *ngFor="let attr of item.attributes | slice:0:2">
+            <span class="font-medium">{{ attr.key }}:</span>
+            <span>{{ attr.value }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- See More Button -->
+  <div class="flex justify-end mt-6">
+    <button
+      (click)="toggleSeeMoreCombos()"
+      class="see-more-btn text-sm font-medium text-white bg-gray-800 hover:bg-gray-900 px-4 py-2 rounded-full shadow transition"
+    >
+      {{ showAllCombos ? 'Show Less' : 'See More' }}
+    </button>
+  </div>
+</div>
+
+<style>
+  .combo-products-section {
+    background-color: #fafafa;
+    border-radius: 1rem;
+    padding: 1.5rem;
+  }
+
+  .see-more-btn {
+    transition: all 0.3s ease;
+  }
+
+  .see-more-btn:hover {
+    transform: scale(1.05);
+  }
+
+  .group:hover img {
+    transform: scale(1.05);
+  }
+
+  .group:hover .bg-gradient-to-t {
+    opacity: 1;
+  }
+</style>
+
+
+
+
+
+
+<!-- ─────────────────────────────── category ─────────────────────────────── -->
+
+
+
+<footer class="w-full bg-white text-gray-800 pt-10 pb-6 border-t border-gray-200">
+  <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10">
+
+    <!-- 🔹 Company Info -->
+    <div>
+      <div class="flex items-center space-x-2 mb-4">
+        <img src="assets/logo.png" alt="HotNBill Logo" class="w-10 h-10 object-contain" />
+        <h2 class="text-2xl font-bold text-gray-900">HotNBill Foods</h2>
+      </div>
+      <p class="text-sm text-gray-600 mb-3 leading-relaxed">
+        Fresh meals made with love, delivered fast to your doorstep. Taste the difference today!
+      </p>
+      <ul class="text-sm space-y-1 text-gray-600">
+        <li><i class="fas fa-map-marker-alt text-gray-500 mr-2"></i> Chennai, India</li>
+        <li><i class="fas fa-phone text-gray-500 mr-2"></i> +91 98765 43210</li>
+        <li><i class="fas fa-envelope text-gray-500 mr-2"></i> support@hotnbill.com</li>
+      </ul>
+    </div>
+
+    <!-- 🔹 Links Section -->
+    <div class="flex flex-col items-center md:items-center">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3">Quick Links</h3>
+      <ul class="space-y-2 text-gray-600 text-center md:text-left">
+        <li><a routerLink="/home" class="hover:text-gray-900 transition">Home</a></li>
+        <li><a routerLink="/menu" class="hover:text-gray-900 transition">Menu</a></li>
+        <li><a routerLink="/privacy" class="hover:text-gray-900 transition">Privacy Policy</a></li>
+        <li><a routerLink="/terms" class="hover:text-gray-900 transition">Terms & Conditions</a></li>
+        <li><a routerLink="/contact" class="hover:text-gray-900 transition">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <!-- 🔹 App Download Section -->
+    <div class="flex flex-col items-center md:items-end">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3">Get Our App</h3>
+      <p class="text-sm text-gray-600 mb-4 text-center md:text-right">
+        Download the app for faster checkout and exclusive offers.
+      </p>
+      <div class="flex space-x-3">
+        <a href="#" class="bg-gray-900 text-white rounded-lg px-3 py-2 flex items-center space-x-2 hover:scale-105 shadow-md transition-transform">
+          <img src="assets/icons/playstore.png" alt="Play Store" class="w-6 h-6" />
+          <div class="text-left">
+            <p class="text-[10px] leading-none text-gray-300">GET IT ON</p>
+            <p class="text-sm font-semibold">Google Play</p>
+          </div>
+        </a>
+        <a href="#" class="bg-gray-900 text-white rounded-lg px-3 py-2 flex items-center space-x-2 hover:scale-105 shadow-md transition-transform">
+          <img src="assets/icons/appstore.png" alt="App Store" class="w-6 h-6" />
+          <div class="text-left">
+            <p class="text-[10px] leading-none text-gray-300">Download on the</p>
+            <p class="text-sm font-semibold">App Store</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 🔸 Bottom Line -->
+  <div class="border-t border-gray-200 mt-10 pt-4 text-center text-sm text-gray-500">
+    © {{ currentYear }} HotNBill Foods. All rights reserved.
+  </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

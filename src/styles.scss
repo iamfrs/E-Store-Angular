@@ -1,0 +1,60 @@
+// /* You can add global styles to this file, and also import other style files */
+// @tailwind base;
+// @tailwind components;
+// @tailwind utilities;
+
+
+
+// @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+// * {
+//   box-sizing: border-box;
+//   // margin: 0;
+//   padding: 0;
+// }
+
+
+// .main-content {
+//   flex: 1;
+// }
+
+// html{
+//   scroll-behavior: smooth;
+// }
+
+// .name{
+//   width: 100%;
+//   white-space: nowrap;
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+// }
+
+// /* SCROLLBAR - START */
+
+// /* SCROLLBAR - END */
+  
+
+//   input::file-selector-button {
+//     font-weight: semi-bold;
+//     font-size: 14px;
+//     color: #FFFFFF;
+//     background-color: #1076BC;
+//     padding: 0.5em;
+//     border: thin solid #1076BC;
+//     border-radius: 6px;
+//   }
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// @import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+// ... rest of your styles ...
