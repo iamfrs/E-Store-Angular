@@ -2,7 +2,7 @@
 <div class="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#D6C3B2]/90 to-[#f8f4f1]/0 z-0"></div>
 
 <!-- Header Content -->
-<section class="relative z-10 px-8 py-4 flex flex-col gap-3 bg-transparent">
+<section class="relative z-10 px-4 py-4 flex flex-col gap-3 bg-transparent">
 
 <!-- Row 1: Logo, Search | Location, Cart, Login -->
 <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 w-full">
@@ -32,50 +32,49 @@
     </div>
   </div>
 
-<!-- Right: Location, Cart, Login -->
-<div class="flex flex-row flex-wrap items-center justify-between gap-4 w-full lg:w-auto">
-  <!-- Location -->
-  <div class="flex items-center gap-2 text-sm text-[#5C4849]">
-    <div class="pt-1">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24">
-        <path
-          d="M12 2C8.13 2 5 5.13 5 9c0 4.84 6.08 11.54 6.39 11.89a1 1 0 0 0 1.22 0C12.92 20.54 19 13.84 19 9c0-3.87-3.13-7-7-7zm0 16.72C10.03 16.21 7 11.94 7 9a5 5 0 1 1 10 0c0 2.94-3.03 7.21-5 9.72z"
-          fill="#6f4e37" />
-        <circle cx="12" cy="9" r="2.5" fill="#6f4e37" />
+  <!-- Right: Location, Cart, Login -->
+  <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 w-full lg:w-auto">
+    <!-- Location -->
+    <div class="flex items-start gap-3 text-sm text-[#5C4849] w-full sm:w-auto">
+      <div class="pt-1">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 24 24">
+          <path
+            d="M12 2C8.13 2 5 5.13 5 9c0 4.84 6.08 11.54 6.39 11.89a1 1 0 0 0 1.22 0C12.92 20.54 19 13.84 19 9c0-3.87-3.13-7-7-7zm0 16.72C10.03 16.21 7 11.94 7 9a5 5 0 1 1 10 0c0 2.94-3.03 7.21-5 9.72z"
+            fill="#6f4e37" />
+          <circle cx="12" cy="9" r="2.5" fill="#6f4e37" />
+        </svg>
+      </div>
+      <div class="flex flex-col justify-center">
+        <button class="text-xs text-[#6f4e37] hover:underline hover:text-[#5C4849] mt-0.5"
+          (click)="updateLocation()">Update Location</button>
+        <span class="text-[13px]">{{ location }}</span>
+      </div>
+    </div>
+
+    <!-- Cart -->
+    <div class="flex items-center gap-1 text-[#5C4849] text-sm cursor-pointer">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="#686868"
+        stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M3 3h2l.4 2M7 13h10l4-8H5.4
+         M7 13l-1.35 5.35a1 1 0 001.9.6L8 17h8
+         l.45 1.95a1 1 0 001.9-.6L17 13H7z" />
       </svg>
+      <span>Cart</span>
     </div>
-    <div class="flex flex-col justify-center">
-      <button class="text-xs text-[#6f4e37] hover:underline hover:text-[#5C4849]" (click)="updateLocation()">Update
-        Location</button>
-      <span class="text-[13px]">{{ location }}</span>
+
+    <!-- Login -->
+    <div class="flex items-center gap-1 text-[#5C4849] text-sm cursor-pointer">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="#686868" stroke-width="1.5"
+        viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10" />
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M12 12c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18c1.5-2 4.5-2 6-2s4.5 0 6 2" />
+      </svg>
+      <span>Login</span>
     </div>
   </div>
-
-  <!-- Cart -->
-  <div class="flex items-center gap-1 text-[#5C4849] text-sm cursor-pointer">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="#686868"
-      stroke-width="2">
-      <path stroke-linecap="round" stroke-linejoin="round"
-        d="M3 3h2l.4 2M7 13h10l4-8H5.4
-       M7 13l-1.35 5.35a1 1 0 001.9.6L8 17h8
-       l.45 1.95a1 1 0 001.9-.6L17 13H7z" />
-    </svg>
-    <span>Cart</span>
-  </div>
-
-  <!-- Login -->
-  <div class="flex items-center gap-1 text-[#5C4849] text-sm cursor-pointer">
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="#686868" stroke-width="1.5"
-      viewBox="0 0 24 24">
-      <circle cx="12" cy="12" r="10" />
-      <path stroke-linecap="round" stroke-linejoin="round"
-        d="M12 12c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z" />
-      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18c1.5-2 4.5-2 6-2s4.5 0 6 2" />
-    </svg>
-    <span>Login</span>
-  </div>
-</div>
-
 </div>
 
 
@@ -526,7 +525,7 @@
 
   <!-- Product Grid -->
   <div
-    class="product-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
+    class="product-container grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
     [class.collapsed]="collapsed"
   >
     <div
@@ -679,7 +678,7 @@
 
   <!-- Products Grid -->
   <div
-    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
+    class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
   >
     <div
       *ngFor="let item of visibleCombos"
